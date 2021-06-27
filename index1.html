@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌞Surya Grocery Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .nav-bar {
+            background-color: rgb(199, 7, 7);
+            width: auto;
+            margin-top: 0;
+            overflow: auto;
+            text-align: center;
+        }
+
+        .logo {
+            float: left;
+            border-radius: 50%;
+            background-color: white;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .menu ul li {
+            display: inline;
+            float: left;
+            padding: 40px;
+            margin-left: 100px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu ul li a:hover {
+            text-decoration: underline;
+        }
+
+        #search {
+            width: 450px;
+            padding: 8px;
+            border: 1px solid black;
+            border-radius: 25px;
+        }
+
+        #side-left {
+
+            overflow: hidden;
+        }
+
+        .popular {
+            text-align: center;
+            float: left;
+            background-color: rgb(199, 7, 7);
+            width: 15%;
+        }
+
+        .popular h2 {
+            color: rgb(255, 255, 255);
+            font-family: italic;
+        }
+
+        .category img {
+            border: 1px solid rgb(238, 237, 237);
+            border-radius: 50%;
+        }
+
+        .category p a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+        }
+
+        .category p a:hover {
+
+            border-bottom: 2px solid rgb(253, 250, 250);
+        }
+
+        .right {
+            width: 85%;
+
+            float: right;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        #main {
+            max-width: 1050px;
+            position: relative;
+            margin-top: 80px;
+            margin-left: 300px;
+
+        }
+
+        .mySlides {
+            display: none
+        }
+
+        .mySlides img {
+            vertical-align: middle;
+            height: 500px;
+        }
+
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+
+        }
+
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        #main .text {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0);
+
+            background: rgba(0, 0, 0, 0.5);
+
+            color: #f1f1f1;
+            width: 100%;
+            padding: 20px;
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+
+        #top {
+            max-width: 1050px;
+            margin-top: 150px;
+            margin-left: 300px;
+
+        }
+
+        .deals {
+            background-color: white;
+            height: 315px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .column {
+            float: left;
+            width: 15%;
+            padding: 5px;
+            text-align: center;
+            height: 315px;
+            margin-left: 15px;
+            border: 1px solid rgb(218, 215, 215);
+            border-radius: 25px;
+            background-color: white;
+        }
+
+
+
+        .column button {
+            border: none;
+            outline: 0;
+            color: white;
+            background-color: rgb(161, 4, 4);
+            text-align: center;
+            cursor: pointer;
+            width: fit-content;
+            font-size: 15px;
+        }
+
+        .column button:hover {
+            opacity: 0.7;
+        }
+
+        #content {
+
+            width: 100%;
+            background-color: rgb(199, 7, 7);
+            margin: auto;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .link {
+            float: left;
+            width: 25%;
+            padding: 15px;
+
+
+        }
+
+        .link p a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+
+        }
+
+        .link p a:hover {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-bar">
+        <div class="logo">
+            <img src="grocery-logo.png" alt="Grocery-image" width="100" height="100">
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="">Categories</a></li>
+                <li><a href="">Deals</a></li>
+                <li><a href="">Whats New</a></li>
+                <li><a href=""> Pick & Delivery</a></li>
+                <li><input type="text" placeholder="Search" id="search"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="shop">
+        <div class="popular">
+            <h2>Shop Popular Categories</h2>
+            <div class="category">
+                <img src="meat-seafood.jpg" alt="Meat-Seafood" width="100" height="100">
+                <p><a href="">Meat & Seafood</a></p>
+            </div>
+            <div class="category">
+                <img src="vegetables.jpg" alt="Vegetables" width="100" height="100">
+                <p> <a href="">Fruits & Vegetables</a></p>
+            </div>
+            <div class="category">
+                <img src="bread.jpg" alt="Bread and Bakery" width="100" height="100">
+                <p><a href="">Bread & Bakery</a></p>
+            </div>
+            <div class="category">
+                <img src="egg.jpg" alt="Dairy-egg-Cheese" width="100" height="100">
+                <p><a href="">Dairy, Eggs & Cheese</a></p>
+            </div>
+            <div class="category">
+                <img src="juice.png" alt="Beverages" width="100" height="100">
+                <p><a href="">Beverages</a></p>
+            </div>
+            <div class="category">
+                <img src="frozen.jpg" alt="Frozen Food" width="100" height="100">
+                <p><a href="">Frozen Foods</a></p>
+            </div>
+            <div class="category">
+                <img src="deli.png" alt="Deli" width="100" height="100">
+                <p><a href="">Deli</a></p>
+            </div>
+        </div>
+
+        <div class="right">
+            <div id="main">
+
+                <div class="mySlides fade">
+
+                    <img src="veg.jpg" alt="Vegetable" style="width:100%;">
+                    <div class="text">
+                        <h1>Farmer Fresh Vegetables</h1>
+                        <p>We deliver organic vegetables fresh from our local fields to your doorstep.</p>
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+
+                    <img src="fruits.jpg" alt="Fruits" style="width:100%;">
+                    <div class="text">
+                        <h1>Locally grown Fresh fruits</h1>
+                        <p>We deliver organic fresh fruits from our local fields to your doorstep.</p>
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+
+                    <img src="canned-food.jpg" alt="canned food" style="width:100%;">
+                    <div class="text">
+                        <h1>Canned Food</h1>
+                        <p>We have diffrent varieties of canned food.</p>
+                    </div>
+                </div>
+                <div class="mySlides fade">
+
+                    <img src="dairy.jpg" alt="Dairy" style="width:100%;">
+                    <div class="text">
+                        <h1>Dairy Products</h1>
+                        <p>We have Locally dairy farm Products and Juice.</p>
+                    </div>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+
+            <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("dot");
+                    if (n > slides.length) { slideIndex = 1 }
+                    if (n < 1) { slideIndex = slides.length }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                }
+
+
+
+            </script>
+
+            <div id="top">
+                <h2>Top Deals</h2>
+                <div class="deals">
+                    <div class="column">
+                        <img src="avacado.jpg" alt="Avacado" height="120" width="120">
+                        <h5>Avacado / ea</h5>
+                        <p style="text-decoration: line-through;">$2.50</p>
+                        <p><span>2 for $4.00</span> </p>
+                        <p><span>($2.00/ea)</span></p>
+                        <p><button>Add to Cart</button></p>
+                    </div>
+                    <div class="column">
+                        <img src="brocolli.jpg" alt="brocolli" height="120" width="120">
+
+                        <h5>Broccoli crown / ea</h5>
+                        <p>(Avg. 0.5lb)</p>
+                        <p style="text-decoration: line-through;">$1.48/ea</p>
+                        <p><span>$1.25 / ea </span> </p>
+                        <p><button>Add to Cart</button></p>
+                    </div>
+                    <div class="column">
+                        <img src="onion.jpg" alt="Onion" height="120" width="120">
+                        <h5>Sweet Yellow Onions</h5>
+                        <p>ea.(Avg. 0.75lb)</p>
+                        <p style="text-decoration: line-through;">$1.46/ea</p>
+                        <p><span>$1.19 / ea ($1.59)</span> </p>
+                        <p><button>Add to Cart</button></p>
+                    </div>
+                    <div class="column">
+                        <img src="ground-beef.jpg" alt="Ground-beef" height="120" width="120">
+                        <h5>Ground Beef </h5>
+                        <p>93% Lean (Avg. 1lb)</p>
+                        <p style="text-decoration: line-through;">$7.99/ea</p>
+                        <p><span>$4.97 / ea ($4.97/lb)</span> </p>
+                        <p><button>Add to Cart</button></p>
+                    </div>
+                    <div class="column">
+                        <img src="ground-turkey.jpg" alt="Ground-Turkey" height="120" width="120">
+                        <h5>Turkey Ground (16 oz)</h5>
+                        <p style="text-decoration: line-through;">$5.49 / ea</p>
+                        <p><span> $4.49 / ea</span> </p>
+                        <p> <span>($0.28/oz)</span></p>
+                        <p><button>Add to Cart</button></p>
+                    </div>
+                    <div class="column">
+                        <img src="beyond.jpg" alt="Beyond-meat" height="120" width="120">
+
+                        <h5>Beyond Meat Burger</h5>
+                        <p>2pk/4oz Patties</p>
+                        <p style="text-decoration: line-through;">$8.99</p>
+                        <p><span>2 for $11.98</span> </p>
+                        <p><button>Add to Cart</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="link">
+            <h3>Quick Links</h3>
+            <p><a href="">Contact Us</a></p>
+            <p><a href="">FAQ</a></p>
+            <p><a href="">Our Brands</a></p>
+            <p><a href="">Gift and Prepaid Cards</a></p>
+        </div>
+        <div class="link">
+            <h3>Company Info</h3>
+            <p><a href="">About Us</a></p>
+            <p><a href="">Career</a></p>
+            <p><a href="">For Employees</a></p>
+            <p><a href="">Product Recalls</a></p>
+        </div>
+        <div class="link">
+            <h3>Policies & Disclosures</h3>
+            <p><a href="">Terms of Use</a></p>
+            <p><a href="">Privacy Policy</a></p>
+            <p><a href="">Accessibility Statement</a></p>
+            <p><a href="">Other Policies & Disclosures</a></p>
+        </div>
+        <div class="link">
+            <h3>Address</h3>
+            <p> 1234, Satndford Ranch Drive</p>
+            <p>Roseville, CA 95655</p>
+            <p>Call-Us:<a href="tel:916-666-6666"> 916-666-6666</a></p>
+        </div>
+
+    </div>
+
+    <footer style="display: block; background-color: rgb(199, 7, 7); overflow: hidden; color: white;">
+        <p style="text-align: center;">&copy; 2021 Surya Company, Inc. All rights reserved</p>
+    </footer>
+
+</body>
+
+</html>
